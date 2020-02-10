@@ -1,0 +1,83 @@
+<div class="row mt-2">
+  <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+    <mat-card >
+      <mat-card-content>
+        <mat-form-field  class="example-form-field">
+          <input type="text" matInput (keyup)="applyFilter($event.target.value)"
+          placeholder="Buscar Personagem" [(ngModel)]="value">
+          <button mat-button *ngIf="value !== ''" type="button" class="btn btn-danger btn-sm" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+            <mat-icon>X</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="row mt-2" *ngIf="showPagination">
+  <div class="col">
+  <h6 class="text-white">Página Atual: {{ paginaAtual }}/{{pages.length}} - Exibindo {{controller.results.length}} por página</h6>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-sm-12 col-md-6 col-lg-4 mb-3" *ngFor="let personagem of personagens">
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>{{personagem.name}}</mat-card-title>
+      
+      </mat-card-header>
+      <img mat-card-image height="163" src="{{ personagem.foto }}" alt="{{ personagem.name }}">
+      <mat-card-content>
+        <table class="table table-light table-sm">
+          <tbody>
+            <tr>
+              <td><strong>Espécie: </strong></td><td>{{ personagem.especie }}</td>
+            </tr>
+            <tr>
+              <td><strong>Ano de nascimento: </strong></td><td>{{ personagem.birth_year !== 'unknown' ? personagem.birth_year : 'Não informado' }}</td>
+            </tr>
+            <tr>
+              <td><strong>Altura: </strong></td><td>{{ personagem.height !== 'unknown' ? personagem.height + ' cm' : 'Não informado'}}</td>
+            </tr>
+            <tr>
+              <td><strong>Peso: </strong></td><td>{{ personagem.mass !== 'unknown' ? personagem.mass + ' kg' : 'Não informado'}}</td>
+            </tr>
+            <tr>
+              <td><strong>Planeta de origem: </strong></td><td>{{ personagem.planeta !== 'unknown' ? personagem.planeta : 'Não informado'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary" (click)="exibirNaves(personagem)">Naves</button>
+        <button mat-icon-button color="warn" (click)="exibirFilmes(personagem)">Filmes</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div class="row" *ngIf="showPagination">
+  <div class="col">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item" [class.disabled]="controller.previous === null">
+        <a class="page-link" href="#" aria-label="Previous"  (click)="getPersonagens(controller.previous)">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        <li *ngFor="let page of pages" class="page-item">
+          <a class="page-link" href="#" (click)="getPersonagens(globals.apiSWpeople+'/?page='+(page+1))">{{page+1}}</a>
+        </li>
+
+        <li class="page-item"  [class.disabled]="controller.next === null">
+          <a class="page-link" href="#" aria-label="Next" (click)="getPersonagens(controller.next)">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
