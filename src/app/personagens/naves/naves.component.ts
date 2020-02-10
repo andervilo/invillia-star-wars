@@ -31,22 +31,23 @@ export class NavesComponent implements OnInit {
       this.naveService.getResouce(item).subscribe(res => {
         try {
           this.naves.push(res);
+
+          this.naves.forEach((nave, index) => {
+            const URL = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDuZjydooCR_5KgFcpioaSOt7A1GeD7EMg&cx=008713618870709825237:sx8awo7vatj&q=' + nave.model.concat(' star wars') + '&searchType=image';
+            this.googleSearchService.getResouce(URL)
+            .subscribe(resp => {
+              try {
+                this.naves[index].imagem = resp.items[0].link;
+              } catch (error) {
+              }
+            });
+          });
         } catch (error) {
         }
       });
     });
 
-    this.naves.forEach((item, index) => {
-      const URL = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDuZjydooCR_5KgFcpioaSOt7A1GeD7EMg&cx=008713618870709825237:sx8awo7vatj&q=' + item.model.concat(' star wars') + '&searchType=image';
-
-      this.googleSearchService.getResouce(URL)
-      .subscribe(res => {
-        try {
-          this.naves[index].imagem = res.items[0].link;
-        } catch (error) {
-        }
-      });
-    });
+    
 }
 
 }

@@ -31,18 +31,17 @@ export class FilmesComponent implements OnInit {
         this.filmesService.getResouce(item).subscribe(res => {
           try {
             this.filmes.push(res);
-          } catch (error) {
-          }
-        });
-      });
 
-      this.filmes.forEach((item, index) => {
-        const URL = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDuZjydooCR_5KgFcpioaSOt7A1GeD7EMg&cx=008713618870709825237:sx8awo7vatj&q=' + item.title.concat(' poster') + '&searchType=image';
-
-        this.googleSearchService.getResouce(URL)
-        .subscribe(res => {
-          try {
-            this.filmes[index].poster = res.items[0].link;
+            this.filmes.forEach((filme, index) => {
+              const URL = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDuZjydooCR_5KgFcpioaSOt7A1GeD7EMg&cx=008713618870709825237:sx8awo7vatj&q=' + filme.title + '&searchType=image';
+              this.googleSearchService.getResouce(URL)
+              .subscribe(resp => {
+                try {
+                  this.filmes[index].poster = resp.items[0].link;
+                } catch (error) {
+                }
+              });
+            });
           } catch (error) {
           }
         });
