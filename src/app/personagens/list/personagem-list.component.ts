@@ -109,7 +109,7 @@ export class PersonagemListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '70%';
+    //dialogConfig.width = '70%';
     dialogConfig.data = {personagem};
     this.dialog.open(FilmesComponent, dialogConfig);
   }
@@ -118,7 +118,7 @@ export class PersonagemListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '70%';
+    //dialogConfig.width = '70%';
     dialogConfig.data = {personagem};
     this.dialog.open(NavesComponent, dialogConfig);
   }

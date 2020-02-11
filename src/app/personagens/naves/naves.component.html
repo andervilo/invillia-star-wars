@@ -1,53 +1,42 @@
 <mat-dialog-content>
-  <div class="card border-primary mb-3">
-  <div class="card-header">{{personagem.name}} - Naves</div>
-    <div class="card-body ">
-  
-      <div *ngFor="let nave of naves">
-        <div class="card mb-3" >
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="{{ nave.imagem }}" class="card-img" alt="{{ nave.name }}">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ nave.name }}</h5>
-                <table class="table table-light table-sm">
-                  <tbody>
-                    <tr>
-                      <td><strong>Modelo:</strong></td><td>{{ nave.model }}</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Fabricante:</strong></td><td>{{ nave.manufacturer }}</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Custo:</strong></td><td>{{ nave.cost_in_credits }}</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Tamanho:</strong></td><td>{{ nave.length }} m</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Capacidade de carga:</strong></td><td>{{ nave.cargo_capacity }} kg</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Tripulação:</strong></td><td>{{ nave.crew }} pessoa(s)</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Passageiros:</strong></td><td>{{ nave.passengers }} pessoa(s)</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Velocidade na atmosfera:</strong></td><td>{{ nave.max_atmosphering_speed }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Fechar</button>
-  </mat-dialog-actions>
+    <mat-card class="example-card" *ngFor="let nave of naves">
+      <mat-card-header>
+        <mat-card-title>{{ nave.name }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{ nave.imagem }}" alt="{{ nave.name }}">
+      <mat-card-content>
+        <table class="table table-light table-sm">
+          <tbody>
+            <tr>
+              <td><strong>Modelo:</strong></td><td>{{ nave.model }}</td>
+            </tr>
+            <tr>
+              <td><strong>Fabricante:</strong></td><td>{{ nave.manufacturer }}</td>
+            </tr>
+            <tr>
+              <td><strong>Custo:</strong></td><td>{{ nave.cost_in_credits }}</td>
+            </tr>
+            <tr>
+              <td><strong>Tamanho:</strong></td><td>{{ nave.length }} m</td>
+            </tr>
+            <tr>
+              <td><strong>Capacidade de carga:</strong></td><td>{{ nave.cargo_capacity }} kg</td>
+            </tr>
+            <tr>
+              <td><strong>Tripulação:</strong></td><td>{{ nave.crew }} pessoa(s)</td>
+            </tr>
+            <tr>
+              <td><strong>Passageiros:</strong></td><td>{{ nave.passengers }} pessoa(s)</td>
+            </tr>
+            <tr>
+              <td><strong>Velocidade na atmosfera:</strong></td><td>{{ nave.max_atmosphering_speed }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

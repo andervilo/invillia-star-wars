@@ -1,37 +1,25 @@
 <mat-dialog-content>
-<div class="card border-primary mb-3">
-<div class="card-header">{{personagem.name}} - Filmes</div>
-  <div class="card-body ">
-
-    <div *ngFor="let filme of filmes">
-      <div class="card mb-3" >
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="{{ filme.poster }}" class="card-img" alt="{{ filme.title }}">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ filme.title }}</h5>
-              <table class="table table-light table-sm">
-                <tbody>
-                  <tr>
-                    <td><strong>Direção:</strong></td><td>{{ filme.producer }}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Episódio:</strong></td><td>{{ filme.episode_id }}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Lançamento:</strong></td><td>{{ filme.release_date | date:'dd/MM/yyyy' }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <mat-card class="example-card" *ngFor="let filme of filmes">
+    <mat-card-header>
+      <mat-card-title>{{ filme.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{ filme.poster }}" alt="{{ filme.title }}">
+    <mat-card-content>
+      <table class="table table-light table-sm">
+        <tbody>
+          <tr>
+            <td><strong>Direção:</strong></td><td>{{ filme.producer }}</td>
+          </tr>
+          <tr>
+            <td><strong>Episódio:</strong></td><td>{{ filme.episode_id }}</td>
+          </tr>
+          <tr>
+            <td><strong>Lançamento:</strong></td><td>{{ filme.release_date | date:'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Fechar</button>
