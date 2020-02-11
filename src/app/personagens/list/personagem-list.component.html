@@ -1,4 +1,4 @@
-<div class="row mt-2">
+<div class="row mt-2 mat-elevation-z2">
   <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
     <mat-card >
       <mat-card-content>
@@ -20,8 +20,8 @@
   </div>
 </div>
 
-<div class="row mt-2">
-  <div class="col-sm-12 col-md-6 col-lg-4 mb-3" *ngFor="let personagem of personagens">
+<div class="row mt-2 ">
+  <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mat-elevation-z1" *ngFor="let personagem of personagens">
     <mat-card >
       <mat-card-header>
         <mat-card-title>{{personagem.name}}</mat-card-title>
@@ -51,8 +51,8 @@
         
       </mat-card-content>
       <mat-card-actions>
-        <button mat-icon-button color="primary" (click)="exibirNaves(personagem)">Naves</button>
-        <button mat-icon-button color="warn" (click)="exibirFilmes(personagem)">Filmes</button>
+        <button mat-raised-button color="primary" (click)="exibirNaves(personagem)">Naves</button>
+        <button mat-raised-button color="warn" (click)="exibirFilmes(personagem)">Filmes</button>
       </mat-card-actions>
     </mat-card>
   </div>

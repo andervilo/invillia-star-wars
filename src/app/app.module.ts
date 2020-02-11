@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { PersonagemListComponent } from './personagens/list/personagem-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { EspecieService } from './services/especie.service';
 import { PlanetaService } from './services/planeta.service';
 import { MatInputModule } from '@angular/material/input';
@@ -37,7 +37,8 @@ import { NavesComponent } from './personagens/naves/naves.component';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [Globals, ApiService, PersonagemService, EspecieService, PlanetaService],
   bootstrap: [AppComponent],
